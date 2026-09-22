@@ -1,0 +1,13 @@
+export const heroContent = {
+  headline: 'We Engineer Software That Scales',
+  subheadline:
+    'LUMEX builds custom software solutions, SaaS products, and AI-powered systems for businesses that demand technical excellence.',
+  primaryCTA: {
+    label: 'Start Your Project',
+    href: '/contact',
+  },
+  secondaryCTA: {
+    label: 'Explore Our Services',
+    href: '/#services',
+  },
+} as const;

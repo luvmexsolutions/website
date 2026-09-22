@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════
+   LUMEX — Design Token Layer (CSS Custom Properties)
+   Single source of truth for runtime theming.
+   Tailwind config references these via var().
+   ══════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    /* ── Surfaces ── */
+    --surface-primary: #06060e;
+    --surface-secondary: #0c0c18;
+    --surface-elevated: #141428;
+    --surface-overlay: rgba(12, 12, 24, 0.85);
+    --surface-border: rgba(255, 255, 255, 0.06);
+
+    /* ── Content ── */
+    --content-primary: #f0f0f8;
+    --content-secondary: #9898b0;
+    --content-tertiary: #5c5c78;
+    --content-inverse: #06060e;
+
+    /* ── Accent ── */
+    --accent-glow: rgba(99, 102, 241, 0.15);
+    --accent-subtle: rgba(99, 102, 241, 0.08);
+  }
+
+  /* ── Base resets ── */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface-primary text-content-primary font-sans;
+  }
+
+  /* ── Focus visible ── */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+
+  /* ── Selection ── */
+  ::selection {
+    @apply bg-brand-500/20 text-content-primary;
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ══════════════════════════════════════════
+   Utility classes
+   ══════════════════════════════════════════ */
+
+@layer utilities {
+  /* Glass-morphism surface */
+  .glass {
+    @apply bg-surface-elevated/60 backdrop-blur-xl border border-surface-border;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-brand-200;
+  }
+
+  /* Subtle hover glow for cards */
+  .hover-glow {
+    @apply transition-all duration-300 ease-smooth;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-glow -translate-y-0.5;
+  }
+
+  /* Section container */
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24 xl:py-28;
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
