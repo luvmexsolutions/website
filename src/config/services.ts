@@ -20,7 +20,7 @@ export const services: Service[] = [
     seo: {
       title: 'Custom Software Development',
       description:
-        'LUMEX builds custom software solutions tailored to your business. Scalable, secure, and engineered for long-term growth.',
+        'LUVMEX builds custom software solutions tailored to your business. Scalable, secure, and engineered for long-term growth.',
     },
   },
   {
@@ -42,7 +42,7 @@ export const services: Service[] = [
     seo: {
       title: 'SaaS Product Development',
       description:
-        'LUMEX builds SaaS products from concept to launch. Multi-tenant, subscription-ready, and cloud-native.',
+        'LUVMEX builds SaaS products from concept to launch. Multi-tenant, subscription-ready, and cloud-native.',
     },
   },
   {
@@ -64,7 +64,7 @@ export const services: Service[] = [
     seo: {
       title: 'Web Application Development',
       description:
-        'LUMEX builds modern web applications — fast, accessible, and SEO-friendly. React, Next.js, and TypeScript expertise.',
+        'LUVMEX builds modern web applications — fast, accessible, and SEO-friendly. React, Next.js, and TypeScript expertise.',
     },
   },
   {
@@ -86,7 +86,7 @@ export const services: Service[] = [
     seo: {
       title: 'Mobile App Development',
       description:
-        'LUMEX builds cross-platform and native mobile apps for iOS and Android. Smooth UX, high performance.',
+        'LUVMEX builds cross-platform and native mobile apps for iOS and Android. Smooth UX, high performance.',
     },
   },
   {
@@ -108,7 +108,7 @@ export const services: Service[] = [
     seo: {
       title: 'AI & Machine Learning Solutions',
       description:
-        'LUMEX builds AI-powered solutions — ML pipelines, LLM integrations, and intelligent automation for your business.',
+        'LUVMEX builds AI-powered solutions — ML pipelines, LLM integrations, and intelligent automation for your business.',
     },
   },
   {
@@ -130,7 +130,7 @@ export const services: Service[] = [
     seo: {
       title: 'Domain-Specific Software Solutions',
       description:
-        'LUMEX builds industry-specific software — healthcare, fintech, logistics, and more. Deep domain expertise.',
+        'LUVMEX builds industry-specific software — healthcare, fintech, logistics, and more. Deep domain expertise.',
     },
   },
 ];

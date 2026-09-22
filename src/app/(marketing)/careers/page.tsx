@@ -6,7 +6,7 @@ import { Icon } from '@/components/ui/icon';
 import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: 'Careers at LUMEX — Senior Engineering Roles',
+  title: 'Careers at LUVMEX — Senior Engineering Roles',
   description:
     'Join our product engineering team. We build mission-critical custom software and distributed systems.',
 };
@@ -46,7 +46,7 @@ export default function CareersPage() {
       <Container wide>
         <div className="max-w-3xl mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-mono mb-4">
-            <span>CAREERS AT LUMEX</span>
+            <span>CAREERS AT LUVMEX</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-content-primary mb-6">

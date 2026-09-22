@@ -6,9 +6,9 @@ import { Icon } from '@/components/ui/icon';
 import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: 'About LUMEX — Software & Product Engineering',
+  title: 'About LUVMEX — Software & Product Engineering',
   description:
-    'LUMEX is a custom software and product engineering company. We engineer resilient, scalable software systems with zero technical debt.',
+    'LUVMEX is a custom software and product engineering company. We engineer resilient, scalable software systems with zero technical debt.',
 };
 
 export default function AboutPage() {
@@ -50,7 +50,7 @@ export default function AboutPage() {
         {/* Hero header */}
         <div className="max-w-3xl mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-mono mb-4">
-            <span>ABOUT LUMEX</span>
+            <span>ABOUT LUVMEX</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-content-primary mb-6">
@@ -58,7 +58,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-xl text-content-secondary leading-relaxed mb-6">
-            LUMEX is a custom software and product engineering company. We partner with ambitious leaders to engineer mission-critical applications, SaaS platforms, and intelligent automation systems.
+            LUVMEX is a custom software and product engineering company. We partner with ambitious leaders to engineer mission-critical applications, SaaS platforms, and intelligent automation systems.
           </p>
 
           <p className="text-body text-content-tertiary leading-relaxed">

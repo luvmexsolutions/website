@@ -6,7 +6,7 @@ import { TechBadge } from '@/components/common/tech-badge';
 import { Icon } from '@/components/ui/icon';
 
 export const metadata: Metadata = {
-  title: 'Engineering Blog & Architectural Insights | LUMEX',
+  title: 'Engineering Blog & Architectural Insights | LUVMEX',
   description:
     'Technical deep-dives on distributed systems, Next.js architecture, database optimization, and high-concurrency software engineering.',
 };

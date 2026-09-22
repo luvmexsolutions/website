@@ -1,0 +1,16 @@
+# LUVMEX — Custom Software & Product Engineering
+
+> LUVMEX is a premier custom software and product engineering company. We engineer resilient, scalable systems, SaaS platforms, and AI-powered solutions for modern businesses.
+
+## Core Capabilities
+- Custom Software Solutions: Scalable, high-concurrency backend architectures and tailored full-stack applications.
+- SaaS Products: Multi-tenant platforms with subscription billing, analytics, and cloud-native infrastructure.
+- Web Applications: Modern Next.js and React applications optimized for Core Web Vitals and accessibility.
+- Mobile Applications: High-performance iOS and Android applications.
+- AI-Powered Solutions: Machine learning pipelines, LLM fine-tuning and integrations, and autonomous automation workflows.
+- Domain-Specific Solutions: Healthcare (HIPAA), FinTech, E-Commerce, Logistics, EdTech, and PropTech systems.
+
+## Contact & Engagements
+- Website: https://luvmex.dev
+- Email: hello@luvmex.dev
+- SLA: Inquiries reviewed within 24 hours by senior engineering leadership.
