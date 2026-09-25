@@ -346,7 +346,7 @@ export function Hero() {
                 {/* Bottom code snippet terminal bar */}
                 <div className="mt-3 p-3 rounded-lg bg-surface-primary/90 border border-surface-border/40 font-mono text-xs text-content-secondary space-y-1">
                   <div className="flex items-center justify-between text-[11px] text-content-tertiary">
-                    <span>// High-concurrency architecture</span>
+                    <span>{'// High-concurrency architecture'}</span>
                     <span className="text-emerald-400 flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                       Healthy
@@ -357,7 +357,7 @@ export function Hero() {
                     <span>system</span> ={' '}
                     <span className="text-indigo-300">createEngine</span>
                     {'({ '}
-                    <span className="text-amber-300">tier</span>: 'enterprise',{' '}
+                    <span className="text-amber-300">tier</span>: &apos;enterprise&apos;,{' '}
                     <span className="text-amber-300">ai</span>: true {'})'};
                   </div>
                 </div>

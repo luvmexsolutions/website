@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   title: 'Careers at LUVMEX — Senior Engineering Roles',
   description:
     'Join our product engineering team. We build mission-critical custom software and distributed systems.',
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function CareersPage() {

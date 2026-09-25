@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    canonical: './',
+  },
 };
 
 export default function RootLayout({
@@ -51,7 +54,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased bg-surface-primary text-content-primary">
@@ -70,7 +72,6 @@ export default function RootLayout({
             url: siteConfig.url,
             description: siteConfig.description,
             email: siteConfig.contact.email,
-            telephone: siteConfig.contact.phone,
             sameAs: siteConfig.socialLinks.map((link) => link.url),
           }}
         />

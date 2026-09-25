@@ -1,36 +1,45 @@
 import type { ContactFormData, ContactResponse } from '@/types/contact';
 import type { ApiResult } from '@/types/api';
-import { api } from './client';
 
 /**
- * Submit a contact/lead form to the backend API.
+ * Submit a contact/lead form to the internal API route.
  *
- * MVP: Returns a mock success response for frontend development.
- * When the backend is ready, uncomment the real API call.
+ * Flow: Client → /api/contact (Next.js API route) → Backend API
+ *
+ * The API route handles:
+ * - Server-side re-validation
+ * - Honeypot verification
+ * - Rate limiting
+ * - Proxying to the real backend (when API_URL is configured)
  */
 export async function submitContactForm(
   data: ContactFormData
 ): Promise<ApiResult<ContactResponse>> {
-  // ── When backend is ready, use this: ──
-  // return api.post<ContactResponse>('/leads', data);
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
 
-  // ── MVP: Mock response for frontend development ──
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+    const body = await res.json().catch(() => ({
+      success: false,
+      error: 'Invalid response from server.',
+    }));
 
-  // Simulate basic validation to test error states
-  if (!data.email || !data.email.includes('@')) {
+    if (!res.ok || !body.success) {
+      return {
+        success: false,
+        error: body.error || 'Failed to submit form. Please try again.',
+        fieldErrors: body.fieldErrors,
+      };
+    }
+
+    return { success: true, data: body.data };
+  } catch {
     return {
       success: false,
-      error: 'Invalid email address.',
-      fieldErrors: { email: ['Please provide a valid email address.'] },
+      error: 'Unable to connect. Please check your internet and try again.',
     };
   }
-
-  return {
-    success: true,
-    data: {
-      id: `lead-${Date.now()}`,
-      message: 'Thank you for reaching out! We\'ll get back to you within 24 hours.',
-    },
-  };
 }

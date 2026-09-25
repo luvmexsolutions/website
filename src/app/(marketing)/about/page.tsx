@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/container';
 import { Card } from '@/components/ui/card';
 import { CtaBanner } from '@/components/common/cta-banner';
 import { Icon } from '@/components/ui/icon';
+import { JsonLd } from '@/components/seo/json-ld';
 import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
@@ -41,6 +42,20 @@ export default function AboutPage() {
 
   return (
     <div className="py-24 md:py-32 relative">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About LUVMEX',
+          description: 'LUVMEX is a custom software and product engineering company.',
+          url: `${siteConfig.url}/about`,
+          mainEntity: {
+            '@type': 'Organization',
+            name: siteConfig.name,
+            url: siteConfig.url,
+          },
+        }}
+      />
       <div
         className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-radial from-brand-600/15 via-transparent to-transparent blur-3xl -z-10"
         aria-hidden="true"

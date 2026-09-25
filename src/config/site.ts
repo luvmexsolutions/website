@@ -9,8 +9,6 @@ export const siteConfig = {
 
   contact: {
     email: 'hello@luvmex.dev',
-    phone: '+1 (555) 000-0000',
-    address: '',
   },
 
   socialLinks: [

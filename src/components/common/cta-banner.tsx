@@ -1,4 +1,4 @@
-import Link from 'next/link';
+
 import { ButtonLink } from '@/components/ui/button';
 import { Icon } from '@/components/ui/icon';
 import { ctaContent } from '@/content/cta';

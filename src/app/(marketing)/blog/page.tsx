@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+
 import { Container } from '@/components/ui/container';
 import { Card } from '@/components/ui/card';
-import { TechBadge } from '@/components/common/tech-badge';
+
 import { Icon } from '@/components/ui/icon';
 
 export const metadata: Metadata = {
   title: 'Engineering Blog & Architectural Insights | LUVMEX',
   description:
     'Technical deep-dives on distributed systems, Next.js architecture, database optimization, and high-concurrency software engineering.',
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
 export default function BlogPage() {

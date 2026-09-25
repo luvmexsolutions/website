@@ -1,18 +1,20 @@
-import { env } from '@/lib/env';
 import type { ApiResult, ApiErrorResponse } from '@/types/api';
 
 /**
  * Typed API client for communicating with the backend.
- * This is THE boundary between frontend and backend.
  *
- * All external API communication flows through this client.
- * When the backend API is connected, only the base URL changes.
+ * NOTE: This client is intended for SERVER-SIDE use only (API routes,
+ * server components, etc.). The backend URL comes from the server-only
+ * API_URL environment variable.
+ *
+ * Client-side forms should call internal API routes (e.g., /api/contact),
+ * which use this client under the hood.
  */
 class ApiClient {
   private baseUrl: string;
 
-  constructor() {
-    this.baseUrl = env.NEXT_PUBLIC_API_URL;
+  constructor(baseUrl?: string) {
+    this.baseUrl = baseUrl || process.env.API_URL || 'http://localhost:8000/api';
   }
 
   async post<TResponse>(
@@ -24,6 +26,7 @@ class ApiClient {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
+        signal: AbortSignal.timeout(10_000),
       });
 
       if (!res.ok) {
@@ -53,6 +56,7 @@ class ApiClient {
       const res = await fetch(`${this.baseUrl}${endpoint}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
+        signal: AbortSignal.timeout(10_000),
       });
 
       if (!res.ok) {

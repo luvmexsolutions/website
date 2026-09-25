@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Container } from '@/components/ui/container';
 import { ButtonLink } from '@/components/ui/button';
@@ -11,6 +12,15 @@ import { MobileNav } from './mobile-nav';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  /** Check if a nav href matches the current pathname */
+  const isActive = (href: string): boolean => {
+    // Hash links like /#services match on homepage
+    if (href.startsWith('/#')) return pathname === '/';
+    // Exact match for non-hash routes
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-surface-border bg-surface-primary/80 backdrop-blur-xl">
@@ -24,18 +34,24 @@ export function Header() {
           </Link>
 
           <div className="hidden lg:flex lg:items-center lg:gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'text-body-sm font-medium text-content-secondary',
-                  'hover:text-content-primary transition-colors duration-200'
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={cn(
+                    'text-body-sm font-medium transition-colors duration-200',
+                    active
+                      ? 'text-brand-400'
+                      : 'text-content-secondary hover:text-content-primary'
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <ButtonLink href={navCTA.href} size="sm">
               {navCTA.label}
             </ButtonLink>
@@ -44,7 +60,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
-            className="lg:hidden p-2 -mr-2 text-content-secondary hover:text-content-primary transition-colors"
+            className="lg:hidden p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-content-secondary hover:text-content-primary transition-colors"
             aria-label="Open menu"
             aria-expanded={isMobileMenuOpen}
           >

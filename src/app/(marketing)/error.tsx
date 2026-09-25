@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import { Button, ButtonLink } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
+import { ButtonLink } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
 import { Icon } from '@/components/ui/icon';
 
-export default function ErrorBoundary({
+export default function MarketingError({
   error,
   reset,
 }: {
@@ -13,12 +14,17 @@ export default function ErrorBoundary({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log error to monitoring if configured
-    console.error('Unhandled runtime error:', error);
+    console.error('Marketing page error:', error);
   }, [error]);
 
   return (
     <div className="min-h-[70vh] flex items-center justify-center py-20 relative">
+      {/* Ambient glow */}
+      <div
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-gradient-radial from-brand-600/10 via-transparent to-transparent blur-3xl -z-10"
+        aria-hidden="true"
+      />
+
       <Container narrow>
         <div className="rounded-2xl border border-status-error/30 bg-surface-secondary/90 p-8 md:p-12 text-center backdrop-blur-md shadow-xl">
           <div className="w-16 h-16 rounded-full bg-status-error/10 border border-status-error/30 text-status-error mx-auto flex items-center justify-center mb-6">
@@ -26,11 +32,11 @@ export default function ErrorBoundary({
           </div>
 
           <h1 className="text-3xl font-bold text-content-primary mb-3">
-            System Execution Error
+            Something went wrong
           </h1>
 
           <p className="text-body text-content-secondary max-w-md mx-auto mb-8">
-            An unexpected error occurred during rendering. Our automated monitoring has recorded this event.
+            We encountered an unexpected error loading this page. This has been logged automatically.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

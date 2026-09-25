@@ -8,6 +8,7 @@ import { CtaBanner } from '@/components/common/cta-banner';
 import { Icon } from '@/components/ui/icon';
 import { caseStudies } from '@/config/case-studies';
 import { siteConfig } from '@/config/site';
+import { JsonLd } from '@/components/seo/json-ld';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -49,6 +50,20 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
   return (
     <div className="py-24 md:py-32 relative">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'CreativeWork',
+          name: study.title,
+          description: study.overview,
+          url: `${siteConfig.url}/case-studies/${study.slug}`,
+          creator: {
+            '@type': 'Organization',
+            name: siteConfig.name,
+            url: siteConfig.url,
+          },
+        }}
+      />
       <div
         className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-radial from-brand-600/15 via-transparent to-transparent blur-3xl -z-10"
         aria-hidden="true"
