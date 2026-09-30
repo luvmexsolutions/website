@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <div className="py-24 md:py-32 relative">
+    <div className="py-24 md:py-32 relative overflow-hidden">
       {/* Background glow */}
       <div
         className="pointer-events-none absolute top-12 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-radial from-brand-600/15 via-brand-500/5 to-transparent blur-3xl -z-10"

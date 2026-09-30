@@ -18,7 +18,7 @@ export default function NotFound() {
             <span>ERROR 404</span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl font-extrabold font-mono tracking-tight text-content-primary mb-4">
+          <h1 className="text-4xl xs:text-5xl sm:text-7xl font-extrabold font-mono tracking-tight text-content-primary mb-4">
             Endpoint Not Found
           </h1>
 

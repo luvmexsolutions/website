@@ -41,7 +41,7 @@ export default function CareersPage() {
   ];
 
   return (
-    <div className="py-24 md:py-32 relative">
+    <div className="py-24 md:py-32 relative overflow-hidden">
       <div
         className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-radial from-brand-600/15 via-transparent to-transparent blur-3xl -z-10"
         aria-hidden="true"

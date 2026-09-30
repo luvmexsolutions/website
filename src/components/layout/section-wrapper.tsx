@@ -27,7 +27,7 @@ export function SectionWrapper({
   );
 
   return (
-    <section id={id} className={cn('section-padding', className)}>
+    <section id={id} className={cn('section-padding relative overflow-hidden', className)}>
       {content}
     </section>
   );

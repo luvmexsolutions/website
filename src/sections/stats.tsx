@@ -14,7 +14,7 @@ export function Stats() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {statsContent.items.map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-indigo-300 to-white mb-2">
+              <div className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-indigo-300 to-white mb-2">
                 {stat.value}
               </div>
               <div className="text-sm md:text-base font-medium text-content-secondary">

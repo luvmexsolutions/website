@@ -68,9 +68,9 @@ export function Hero() {
             </div>
 
             {/* Key trust badges */}
-            <div className="grid grid-cols-3 gap-6 pt-10 mt-10 border-t border-surface-border/60 w-full max-w-lg">
+            <div className="grid grid-cols-2 xs:grid-cols-3 gap-4 xs:gap-6 pt-10 mt-10 border-t border-surface-border/60 w-full max-w-lg">
               <div>
-                <div className="text-xl md:text-2xl font-bold font-mono text-content-primary">
+                <div className="text-lg xs:text-xl md:text-2xl font-bold font-mono text-content-primary">
                   100%
                 </div>
                 <div className="text-xs text-content-tertiary">
@@ -78,15 +78,15 @@ export function Hero() {
                 </div>
               </div>
               <div>
-                <div className="text-xl md:text-2xl font-bold font-mono text-content-primary">
+                <div className="text-lg xs:text-xl md:text-2xl font-bold font-mono text-content-primary">
                   &lt; 50ms
                 </div>
                 <div className="text-xs text-content-tertiary">
                   P99 Target Latency
                 </div>
               </div>
-              <div>
-                <div className="text-xl md:text-2xl font-bold font-mono text-content-primary">
+              <div className="col-span-2 xs:col-span-1">
+                <div className="text-lg xs:text-xl md:text-2xl font-bold font-mono text-content-primary">
                   0-Lockin
                 </div>
                 <div className="text-xs text-content-tertiary">
@@ -102,16 +102,16 @@ export function Hero() {
               {/* Card Window Container */}
               <div className="relative rounded-2xl border border-surface-border bg-surface-secondary/80 backdrop-blur-xl shadow-2xl p-5 md:p-6 overflow-hidden">
                 {/* Window header */}
-                <div className="flex items-center justify-between pb-4 mb-4 border-b border-surface-border/60">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                    <span className="ml-2 font-mono text-xs text-content-tertiary">
+                <div className="flex items-center justify-between gap-2 pb-4 mb-4 border-b border-surface-border/60 flex-wrap">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="w-3 h-3 rounded-full bg-rose-500/80 shrink-0" />
+                    <span className="w-3 h-3 rounded-full bg-amber-500/80 shrink-0" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-500/80 shrink-0" />
+                    <span className="ml-2 font-mono text-xs text-content-tertiary truncate">
                       luvmex-core.pipeline.ts
                     </span>
                   </div>
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded border border-brand-500/20">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded border border-brand-500/20 shrink-0">
                     Active Node
                   </span>
                 </div>
@@ -344,15 +344,15 @@ export function Hero() {
                 </div>
 
                 {/* Bottom code snippet terminal bar */}
-                <div className="mt-3 p-3 rounded-lg bg-surface-primary/90 border border-surface-border/40 font-mono text-xs text-content-secondary space-y-1">
+                <div className="mt-3 p-3 rounded-lg bg-surface-primary/90 border border-surface-border/40 font-mono text-xs text-content-secondary space-y-1 overflow-x-auto scrollbar-hide">
                   <div className="flex items-center justify-between text-[11px] text-content-tertiary">
                     <span>{'// High-concurrency architecture'}</span>
-                    <span className="text-emerald-400 flex items-center gap-1">
+                    <span className="text-emerald-400 flex items-center gap-1 shrink-0 ml-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                       Healthy
                     </span>
                   </div>
-                  <div className="text-content-primary">
+                  <div className="text-content-primary whitespace-nowrap">
                     <span className="text-brand-400">const</span>{' '}
                     <span>system</span> ={' '}
                     <span className="text-indigo-300">createEngine</span>

@@ -41,7 +41,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="py-24 md:py-32 relative">
+    <div className="py-24 md:py-32 relative overflow-hidden">
       <JsonLd
         data={{
           '@context': 'https://schema.org',

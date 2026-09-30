@@ -184,7 +184,7 @@ export function ContactForm() {
             label="Full Name"
             id="contact-name"
             required
-            placeholder="Jane Doe"
+            placeholder="Aarav Sharma"
             value={formData.name || ''}
             error={errors.name}
             onChange={(e) => handleChange('name', e.target.value)}
@@ -208,7 +208,7 @@ export function ContactForm() {
             id="contact-email"
             type="email"
             required
-            placeholder="jane@company.com"
+            placeholder="aarav@company.com"
             value={formData.email || ''}
             error={errors.email}
             onChange={(e) => handleChange('email', e.target.value)}
@@ -218,7 +218,7 @@ export function ContactForm() {
             label="Phone Number"
             id="contact-phone"
             type="tel"
-            placeholder="+1 (555) 000-0000"
+            placeholder="+91 98765 43210"
             value={formData.phone || ''}
             error={errors.phone}
             onChange={(e) => handleChange('phone', e.target.value)}

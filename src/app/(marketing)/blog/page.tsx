@@ -47,7 +47,7 @@ export default function BlogPage() {
   ];
 
   return (
-    <div className="py-24 md:py-32 relative">
+    <div className="py-24 md:py-32 relative overflow-hidden">
       <div
         className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-radial from-brand-600/15 via-transparent to-transparent blur-3xl -z-10"
         aria-hidden="true"
@@ -68,7 +68,7 @@ export default function BlogPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {articles.map((article) => (
             <Card
               key={article.slug}
