@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { google } from 'googleapis';
 import { contactSchema } from '@/features/contact/schemas/contact-schema';
 
 /**
@@ -8,8 +9,8 @@ import { contactSchema } from '@/features/contact/schemas/contact-schema';
  * - Re-validates with Zod (defense-in-depth)
  * - Checks honeypot field
  * - Rate-limits by IP (10 requests per minute)
- * - Forwards to the backend API (API_URL env var)
- * - Falls back to mock response when no backend is configured
+ * - Appends contact information to Google Sheets
+ * - Falls back to mock response in development when missing Google credentials
  */
 
 // ── Simple in-memory rate limiter ──
@@ -106,41 +107,78 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ── Forward to backend API ──
-    const backendUrl = process.env.API_URL;
+    // ── Primary Destination: Google Sheets ──
+    const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
+    const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+    const sheetId = process.env.GOOGLE_SHEET_ID;
 
-    if (backendUrl) {
-      const endpoint = process.env.API_CONTACT_ENDPOINT || '/leads';
-      const backendResponse = await fetch(`${backendUrl}${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(validation.data),
-        signal: AbortSignal.timeout(10_000), // 10s timeout
-      });
+    if (clientEmail && privateKey && sheetId) {
+      try {
+        const auth = new google.auth.GoogleAuth({
+          credentials: {
+            client_email: clientEmail,
+            private_key: privateKey,
+          },
+          scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
 
-      const backendData = await backendResponse.json().catch(() => ({
-        message: 'An unexpected error occurred.',
-      }));
+        const sheets = google.sheets({ version: 'v4', auth });
+        
+        const timestamp = new Date().toISOString();
+        const timestampIND = new Date().toLocaleString('en-IN', {
+          timeZone: 'Asia/Kolkata',
+          hour12: true,
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+        const leadId = `lead-${Date.now()}`;
+        const row = [
+          leadId,
+          timestamp,
+          timestampIND,
+          validation.data.name,
+          validation.data.company || '',
+          validation.data.email,
+          validation.data.phone || '',
+          validation.data.service,
+          validation.data.budget,
+          validation.data.timeline,
+          validation.data.description,
+        ];
 
-      if (!backendResponse.ok) {
+        await sheets.spreadsheets.values.append({
+          spreadsheetId: sheetId,
+          range: 'A1',
+          valueInputOption: 'USER_ENTERED',
+          requestBody: {
+            values: [row],
+          },
+        });
+
+        return NextResponse.json({
+          success: true,
+          data: {
+            id: leadId,
+            message: 'Thank you for reaching out! We\'ll get back to you within 24 hours.',
+          },
+        });
+      } catch (sheetsError) {
+        console.error('[LUVMEX] Google Sheets API error:', sheetsError);
         return NextResponse.json(
           {
             success: false,
-            error: backendData.message || 'Failed to submit. Please try again.',
-            fieldErrors: backendData.fieldErrors,
+            error: 'An internal error occurred. Please try again or email us directly.',
           },
-          { status: backendResponse.status }
+          { status: 500 }
         );
       }
-
-      return NextResponse.json({ success: true, data: backendData });
     }
 
-    // ── Fallback: No backend configured (development mode) ──
-    console.warn(
-      '[LUVMEX] API_URL not configured — returning mock response. Set API_URL in .env.local for production.'
-    );
-
+    // Fallback response when no configuration is present
     await new Promise((resolve) => setTimeout(resolve, 800));
 
     return NextResponse.json({

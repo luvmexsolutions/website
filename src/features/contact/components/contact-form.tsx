@@ -21,10 +21,10 @@ const serviceOptions = [
 ];
 
 const budgetOptions = [
-  { value: '<25k', label: '< $25,000' },
-  { value: '25k-50k', label: '$25,000 – $50,000' },
-  { value: '50k-100k', label: '$50,000 – $100,000' },
-  { value: '100k+', label: '$100,000+' },
+  { value: '<25k', label: '< ₹25,000' },
+  { value: '25k-50k', label: '₹25k – ₹50k' },
+  { value: '50k-100k', label: '₹50k – ₹100k' },
+  { value: '100k+', label: '₹100k+' },
   { value: 'not-sure', label: 'Still scoping / Not sure' },
 ];
 
