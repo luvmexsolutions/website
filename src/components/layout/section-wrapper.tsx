@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Container } from '@/components/ui/container';
 
@@ -12,23 +13,22 @@ interface SectionWrapperProps {
 /**
  * SectionWrapper — consistent section spacing and optional container.
  * Every homepage section uses this wrapper for uniform vertical rhythm.
+ * Forwards ref for scroll-based animations.
  */
-export function SectionWrapper({
-  children,
-  id,
-  className,
-  container = true,
-  narrow = false,
-}: SectionWrapperProps) {
-  const content = container ? (
-    <Container narrow={narrow}>{children}</Container>
-  ) : (
-    children
-  );
+export const SectionWrapper = forwardRef<HTMLElement, SectionWrapperProps>(
+  ({ children, id, className, container = true, narrow = false }, ref) => {
+    const content = container ? (
+      <Container narrow={narrow}>{children}</Container>
+    ) : (
+      children
+    );
 
-  return (
-    <section id={id} className={cn('section-padding', className)}>
-      {content}
-    </section>
-  );
-}
+    return (
+      <section ref={ref} id={id} className={cn('section-padding', className)}>
+        {content}
+      </section>
+    );
+  }
+);
+
+SectionWrapper.displayName = 'SectionWrapper';

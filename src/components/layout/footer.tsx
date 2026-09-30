@@ -9,22 +9,38 @@ import { footerLinks } from '@/config/footer';
  */
 export function Footer() {
   return (
-    <footer className="border-t border-surface-border bg-surface-secondary">
+    <footer className="relative border-t border-surface-border/60 bg-surface-secondary overflow-hidden">
+      {/* Top fade gradient */}
+      <div
+        className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-500/30 to-transparent"
+        aria-hidden="true"
+      />
+
+      {/* Subtle background glow */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-radial from-brand-900/20 via-transparent to-transparent blur-3xl"
+        aria-hidden="true"
+      />
+
       <Container>
-        <div className="py-12 sm:py-16">
-          {/* Grid: Logo + link columns */}
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="py-14 sm:py-20 relative z-10">
+          {/* Grid: Logo column + link columns */}
+          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+
             {/* Brand column */}
             <div className="sm:col-span-2 lg:col-span-1">
-              <Link href="/" className="text-heading-4 font-bold text-content-primary tracking-tight">
+              <Link
+                href="/"
+                className="inline-block text-lg font-bold text-content-primary tracking-tighter hover:text-brand-400 transition-colors duration-300"
+              >
                 {siteConfig.name}
               </Link>
-              <p className="mt-3 text-body-sm text-content-secondary max-w-xs">
+              <p className="mt-4 text-sm text-content-tertiary leading-relaxed max-w-[28ch]">
                 {siteConfig.description}
               </p>
 
               {/* Social links */}
-              <div className="mt-6 flex gap-4">
+              <div className="mt-7 flex gap-3">
                 {siteConfig.socialLinks.map((social) => (
                   <a
                     key={social.platform}
@@ -32,7 +48,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.platform}
-                    className="text-content-tertiary hover:text-content-primary transition-colors"
+                    className="group flex h-9 w-9 items-center justify-center rounded-full border border-surface-border bg-surface-card text-content-tertiary hover:text-content-primary hover:border-brand-500/30 hover:bg-brand-500/8 transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)]"
                   >
                     <SocialIcon platform={social.icon} />
                   </a>
@@ -43,7 +59,7 @@ export function Footer() {
             {/* Link columns */}
             {footerLinks.map((group) => (
               <div key={group.title}>
-                <h3 className="text-body-sm font-semibold text-content-primary mb-4">
+                <h3 className="text-xs font-semibold uppercase tracking-[0.12em] text-content-tertiary mb-5">
                   {group.title}
                 </h3>
                 <ul className="space-y-3">
@@ -51,7 +67,7 @@ export function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-body-sm text-content-secondary hover:text-content-primary transition-colors"
+                        className="text-sm text-content-secondary hover:text-content-primary transition-colors duration-200 link-underline"
                       >
                         {link.label}
                       </Link>
@@ -63,15 +79,21 @@ export function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div className="mt-12 pt-8 border-t border-surface-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <p className="text-caption text-content-tertiary">
+          <div className="mt-14 pt-8 border-t border-surface-border/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p className="text-xs text-content-tertiary font-mono">
               {siteConfig.legal.copyright}
             </p>
             <div className="flex gap-6">
-              <Link href={siteConfig.legal.privacyUrl} className="text-caption text-content-tertiary hover:text-content-secondary transition-colors">
+              <Link
+                href={siteConfig.legal.privacyUrl}
+                className="text-xs text-content-tertiary hover:text-content-secondary transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link href={siteConfig.legal.termsUrl} className="text-caption text-content-tertiary hover:text-content-secondary transition-colors">
+              <Link
+                href={siteConfig.legal.termsUrl}
+                className="text-xs text-content-tertiary hover:text-content-secondary transition-colors"
+              >
                 Terms of Service
               </Link>
             </div>
@@ -82,9 +104,9 @@ export function Footer() {
   );
 }
 
-/** Inline SVG social icons to avoid dependency */
+/** Inline SVG social icons */
 function SocialIcon({ platform }: { platform: string }) {
-  const size = 20;
+  const size = 16;
   switch (platform) {
     case 'linkedin':
       return (

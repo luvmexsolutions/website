@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'picsum.photos' },
+      { protocol: 'https', hostname: 'fastly.picsum.photos' },
+      { protocol: 'https', hostname: 'source.unsplash.com' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+    ],
   },
 
   // Strict TypeScript during builds

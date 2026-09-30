@@ -13,23 +13,23 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-gradient-brand text-white hover:bg-gradient-brand-hover shadow-card hover:shadow-card-hover active:scale-[0.98]',
+    'bg-brand-600 hover:bg-brand-500 text-white shadow-glow-sm hover:shadow-glow active:scale-[0.97]',
   secondary:
-    'border border-surface-border text-content-primary hover:bg-surface-elevated hover:border-brand-500/30 active:scale-[0.98]',
+    'border border-surface-border text-content-primary hover:bg-surface-elevated hover:border-surface-border-accent active:scale-[0.97]',
   ghost:
     'text-content-secondary hover:text-content-primary hover:bg-surface-elevated',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-body-sm',
-  md: 'px-6 py-3 text-body',
-  lg: 'px-8 py-4 text-body-lg',
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-5 py-2.5 text-sm',
+  lg: 'px-7 py-3.5 text-base',
 };
 
 function getButtonClasses(variant: ButtonVariant, size: ButtonSize, className?: string) {
   return cn(
-    'inline-flex items-center justify-center gap-2 rounded-lg font-medium',
-    'transition-all duration-200 ease-smooth',
+    'inline-flex items-center justify-center gap-2 rounded-full font-medium',
+    'transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]',
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500',
     'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
     variantStyles[variant],
@@ -69,7 +69,6 @@ Button.displayName = 'Button';
 
 /**
  * ButtonLink — Link styled as a button.
- * Use this instead of wrapping <Link> inside <Button>.
  */
 interface ButtonLinkProps {
   href: string;
