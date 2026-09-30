@@ -182,27 +182,13 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
                 onClick={onClose}
                 aria-current={active ? 'page' : undefined}
                 className={cn(
-                  'text-base font-medium transition-colors py-2.5 px-3 rounded-lg flex items-center justify-between',
+                  'text-base font-medium transition-colors py-2.5 px-3 rounded-lg block',
                   active
                     ? 'text-brand-400 bg-brand-500/10 font-semibold'
                     : 'text-content-secondary hover:text-content-primary hover:bg-surface-secondary/60'
                 )}
               >
-                <span>{item.label}</span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={cn('transition-transform', active ? 'text-brand-400' : 'text-content-tertiary')}
-                  aria-hidden="true"
-                >
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
+                {item.label}
               </Link>
             );
           })}

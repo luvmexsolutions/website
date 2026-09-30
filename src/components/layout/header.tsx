@@ -23,7 +23,7 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-surface-border bg-surface-primary/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-surface-border bg-surface-primary/80 backdrop-blur-xl">
       <Container>
         <nav className="flex h-16 items-center justify-between lg:h-18" aria-label="Main navigation">
           <Link

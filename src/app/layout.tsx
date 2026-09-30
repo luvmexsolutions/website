@@ -54,9 +54,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full overflow-x-hidden`}
+      className={`${inter.variable} ${jetbrainsMono.variable} h-full overflow-x-clip`}
     >
-      <body className="min-h-full flex flex-col antialiased bg-surface-primary text-content-primary overflow-x-hidden max-w-full">
+      <body className="min-h-full flex flex-col antialiased bg-surface-primary text-content-primary overflow-x-clip max-w-full">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 px-4 py-2 bg-brand-600 text-white rounded-md font-medium shadow-lg"
@@ -77,7 +77,7 @@ export default function RootLayout({
         />
 
         <Header />
-        <main id="main-content" className="flex-1 overflow-x-hidden w-full max-w-full">
+        <main id="main-content" className="flex-1 overflow-x-clip w-full max-w-full">
           {children}
         </main>
         <Footer />

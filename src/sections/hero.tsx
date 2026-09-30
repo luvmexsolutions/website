@@ -5,7 +5,7 @@ import { heroContent } from '@/content/hero';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36">
+    <section className="relative overflow-hidden pt-7 pb-20 md:pt-10 md:pb-28 lg:pt-12 lg:pb-36">
       {/* Background ambient radial glow spots */}
       <div
         className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[550px] bg-gradient-radial from-brand-600/18 via-brand-500/5 to-transparent blur-3xl -z-10"
