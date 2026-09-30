@@ -80,6 +80,16 @@ interface ButtonLinkProps {
 }
 
 export function ButtonLink({ href, variant = 'primary', size = 'md', className, children }: ButtonLinkProps) {
+  const isHash = href.startsWith('#');
+
+  if (isHash) {
+    return (
+      <a href={href} className={getButtonClasses(variant, size, className)}>
+        {children}
+      </a>
+    );
+  }
+
   return (
     <Link href={href} className={getButtonClasses(variant, size, className)}>
       {children}

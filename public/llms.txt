@@ -11,6 +11,6 @@
 - Domain-Specific Solutions: Healthcare (HIPAA), FinTech, E-Commerce, Logistics, EdTech, and PropTech systems.
 
 ## Contact & Engagements
-- Website: https://luvmex.dev
+- Website: https://luvmex.com
 - Email: luvmexsolutions@gmail.com
 - SLA: Inquiries reviewed within 24 hours by senior engineering leadership.

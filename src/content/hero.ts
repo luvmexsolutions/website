@@ -8,6 +8,6 @@ export const heroContent = {
   },
   secondaryCTA: {
     label: 'Explore Our Services',
-    href: '/#services',
+    href: '#services',
   },
 } as const;
